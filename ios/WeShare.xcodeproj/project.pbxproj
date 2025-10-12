@@ -16,6 +16,8 @@
 		6E5D9F88D6774A97AB2CA950 /* Okra-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90884FBEB43445AFB14C16BD /* Okra-Medium.ttf */; };
 		C82D0DF233784E07A10D9EAF /* Okra-MediumLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9694370AF0549AAA1B85DAB /* Okra-MediumLight.ttf */; };
 		57D46B5C756E4762ABDBF338 /* Okra-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A199877386646A3A005A07C /* Okra-Regular.ttf */; };
+		7FF9B10552B24A0AAA471826 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E9B29A606E47E0982E012C /* BootSplash.storyboard */; };
+		C35264246B9148CFA1CD3D74 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A97221F3EFB441EB65E7326 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		90884FBEB43445AFB14C16BD /* Okra-Medium.ttf */ = {isa = PBXFileReference; name = "Okra-Medium.ttf"; path = "../src/assets/fonts/Okra-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B9694370AF0549AAA1B85DAB /* Okra-MediumLight.ttf */ = {isa = PBXFileReference; name = "Okra-MediumLight.ttf"; path = "../src/assets/fonts/Okra-MediumLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9A199877386646A3A005A07C /* Okra-Regular.ttf */ = {isa = PBXFileReference; name = "Okra-Regular.ttf"; path = "../src/assets/fonts/Okra-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D3E9B29A606E47E0982E012C /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "WeShare/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9A97221F3EFB441EB65E7326 /* Colors.xcassets */ = {isa = PBXFileReference; name = "Colors.xcassets"; path = "WeShare/Colors.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				D3E9B29A606E47E0982E012C /* BootSplash.storyboard */,
+				9A97221F3EFB441EB65E7326 /* Colors.xcassets */,
 			);
 			name = WeShare;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 				6E5D9F88D6774A97AB2CA950 /* Okra-Medium.ttf in Resources */,
 				C82D0DF233784E07A10D9EAF /* Okra-MediumLight.ttf in Resources */,
 				57D46B5C756E4762ABDBF338 /* Okra-Regular.ttf in Resources */,
+				7FF9B10552B24A0AAA471826 /* BootSplash.storyboard in Resources */,
+				C35264246B9148CFA1CD3D74 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

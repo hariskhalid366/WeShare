@@ -5,34 +5,39 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { Platform, StatusBar, StyleSheet, useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Navigation from './src/navigation/Navigation';
+import { BlurView } from '@react-native-community/blur';
+import { useEffect } from 'react';
+import { checkFilePermissions } from './src/utils/libraryHelpers';
+import { requestPhotoPermission, screenWidth } from './src/utils/Constants';
 
 function App() {
+  useEffect(() => {
+    checkFilePermissions(Platform.OS);
+    requestPhotoPermission();
+  }, []);
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
+      <BlurView
+        style={{
+          position: 'absolute',
+          zIndex: 2,
+          top: 0,
+          maxWidth: screenWidth * screenWidth,
+          width: screenWidth,
+          height: 40,
+        }}
+        blurAmount={4}
+        blurRadius={6}
+        blurType="light"
       />
-    </View>
+      <Navigation mode={isDarkMode} />
+    </SafeAreaProvider>
   );
 }
 

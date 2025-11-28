@@ -90,6 +90,7 @@ export const checkFilePermissions = async (platform: string) => {
         return false;
       }
     } catch (err) {
+      console.log('Error', err);
       return false;
     }
   } else {

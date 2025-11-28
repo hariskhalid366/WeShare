@@ -4,7 +4,7 @@ import HomeScreen from '../screens/HomeScreen';
 import SendScreen from '../screens/SendScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from '../utils/NavigationUtil';
-import ReveiveScreen from '../screens/ReceiveScreen';
+import ReceiveScreen from '../screens/ReceiveScreen';
 import DownloadsScreen from '../screens/DownloadsScreen';
 import QrScannerModel from '../components/modal/QrScannerModel ';
 import QrGenerateModel from '../components/modal/QrGenerateModel';
@@ -54,7 +54,7 @@ const Navigation: FC<NavigationProps> = ({ mode = false }) => {
         >
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="SendScreen" component={SendScreen} />
-          <Stack.Screen name="ReveiveScreen" component={ReveiveScreen} />
+          <Stack.Screen name="ReceiveScreen" component={ReceiveScreen} />
           <Stack.Screen name="ConnectionScreen" component={ConnectedScreen} />
           <Stack.Screen name="DownloadScreen" component={DownloadsScreen} />
           <Stack.Screen

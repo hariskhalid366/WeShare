@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useTCP } from '../services/TCPProvider';
+import { useChunkStore } from '../db/chunkStore';
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { sendStyles } from '../styles/sendStyles';
@@ -22,15 +23,12 @@ import { formatFileSize } from '../utils/libraryHelpers';
 
 const ConnectedScreen = () => {
   const {
-    connectedDevices,
+    connectedDevice,
     disconnect,
-    sendFileAck,
-    sentFiles,
-    receivedFiles,
-    totalReceiveBytes,
-    totalSentBytes,
+    sendFile,
     isConnected,
   } = useTCP();
+  const { sentFiles, receivedFiles } = useChunkStore();
 
   const Colors = useColors();
 
@@ -59,12 +57,12 @@ const ConnectedScreen = () => {
 
   const onMediaPickedUp = (image: any) => {
     console.log('Picked image', image);
-    sendFileAck(image, 'image');
+    sendFile(image);
   };
 
   const onFilePickedUp = (file: any) => {
     console.log('Picked image', file);
-    sendFileAck(file, 'file');
+    sendFile(file);
   };
 
   useEffect(() => {
@@ -149,7 +147,7 @@ const ConnectedScreen = () => {
                 fontFamily="Okra-Bold"
                 fontSize={14}
               >
-                {connectedDevices || 'Unknown'}
+                {connectedDevice || 'Unknown'}
               </CustomText>
             </View>
             <TouchableOpacity
@@ -222,7 +220,9 @@ const ConnectedScreen = () => {
               <View style={connectionStyles.sendReceiveDataContainer}>
                 <CustomText fontFamily="Okra-Bold" fontSize={14}>
                   {formatFileSize(
-                    activeTab === 'SENT' ? totalSentBytes : totalReceiveBytes,
+                    activeTab === 'SENT' 
+                      ? sentFiles.reduce((acc, f) => acc + f.size, 0)
+                      : receivedFiles.reduce((acc, f) => acc + f.size, 0)
                   )}
                 </CustomText>
                 <CustomText fontFamily="Okra-Bold">/</CustomText>

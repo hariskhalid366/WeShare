@@ -1,6 +1,6 @@
 import { Platform } from "react-native";
 import { StyleSheet } from "react-native";
-import { Colors } from "../utils/Constants";
+import { LightColors } from "../utils/Constants";
 
 export const bottomTabStyles = StyleSheet.create({
     container: {
@@ -29,7 +29,7 @@ export const bottomTabStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 100,
-        backgroundColor: Colors.primary,
+        backgroundColor: LightColors.primary,
         bottom: 15,
         position: 'absolute',
         left: '48%',

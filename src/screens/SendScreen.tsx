@@ -40,12 +40,13 @@ const SendScreen = () => {
     connectToServer(host, parseInt(port, 10), deviceName);
   };
 
-  const listenForDevices = () => {
-    const server = dgram.createSocket({
+  const listenForDevices = async () => {
+    const server: any = dgram.createSocket({
       type: 'udp4',
       reusePort: true,
     });
     const port = 57143;
+
     server.bind(port, () => {
       console.log('Listening for nearby devices...');
     });
@@ -55,6 +56,8 @@ const SendScreen = () => {
         ?.toString()
         ?.replace('tcp://', '')
         ?.split('|');
+
+      console.log(connectionData, otherDevice);
 
       setNearbyDevices((prevDevices: any) => {
         const deviceExists = prevDevices?.some(
@@ -86,6 +89,7 @@ const SendScreen = () => {
         return prevDevices;
       });
     });
+    return server;
   };
 
   const getRandomPosition = (

@@ -1,8 +1,5 @@
 import {
   ActivityIndicator,
-  Modal,
-  StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   Image,
@@ -21,7 +18,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import QRCode from 'react-native-qrcode-svg';
 import { multiColor, useColors } from '../../utils/Constants';
 import CustomText from '../global/CustomText';
-import { XMarkIcon } from 'react-native-heroicons/outline';
+import { CameraIcon, XMarkIcon } from 'react-native-heroicons/outline';
 import {
   useCameraDevice,
   Camera,
@@ -29,6 +26,7 @@ import {
 } from 'react-native-vision-camera';
 import { goBack, resetAndNavigate } from '../../utils/NavigationUtil';
 import { useTCP } from '../../services/TCPProvider';
+import { sendStyles } from '../../styles/sendStyles';
 
 interface QrScannerModelProps {
   visible?: boolean;
@@ -72,6 +70,8 @@ const QrScannerModel: FC<QrScannerModelProps> = ({ visible, onClose }) => {
   }, []);
 
   const handleScan = (data: any) => {
+    console.log('connection', data);
+
     const [connectionData, deviceName] = data.replace('tcp://', '').split('|');
     const [host, port] = connectionData?.split(':');
     connectToServer(host, parseInt(port, 10), deviceName);
@@ -89,6 +89,7 @@ const QrScannerModel: FC<QrScannerModelProps> = ({ visible, onClose }) => {
           const scannedData = codes[0].value;
           console.log(codes);
           setCodeFound(true);
+          Vibration.vibrate([0, 1000, 100, 1000], false);
           handleScan(scannedData);
         }
       },

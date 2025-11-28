@@ -23,10 +23,10 @@ import {
   getLocalIPAddress,
 } from '../utils/networkUtils';
 
-const ReveiveScreen = () => {
+const ReceiveScreen = () => {
   const { startServer, server, isConnected } = useTCP();
   const [qrValue, setQRValue] = useState<any | null>(null);
-  const intervelRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const setupServer = async () => {
     const deviceName = await DeviceInfo.getDeviceName();
@@ -81,28 +81,28 @@ const ReveiveScreen = () => {
     if (!qrValue) return;
 
     sendDiscoverySignal();
-    intervelRef.current = setInterval(sendDiscoverySignal, 3000);
+    intervalRef.current = setInterval(sendDiscoverySignal, 3000);
     return () => {
-      if (intervelRef.current) {
-        clearInterval(intervelRef.current);
-        intervelRef.current = null;
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     };
   }, []);
 
   const handleGoBack = () => {
-    if (intervelRef.current) {
-      clearInterval(intervelRef.current);
-      intervelRef.current = null;
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
     goBack();
   };
 
   useEffect(() => {
     if (isConnected) {
-      if (intervelRef.current) {
-        clearInterval(intervelRef.current);
-        intervelRef.current = null;
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
       navigate('ConnectionScreen');
     }
@@ -169,6 +169,6 @@ const ReveiveScreen = () => {
   );
 };
 
-export default ReveiveScreen;
+export default ReceiveScreen;
 
 const styles = StyleSheet.create({});
